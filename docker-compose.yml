@@ -1,0 +1,11 @@
+services:
+  app:
+    container_name: node-process-test-ctr
+    build:
+      context: . # Use the current directory to build the Docker image
+      dockerfile: Dockerfile # Name of your Dockerfile
+    ports:
+      - '3001:3001' # Map container port 3001 to host port 3001
+    environment:
+      - NODE_ENV=production # Set environment variables
+    restart: always # Automatically restart the container on failure
