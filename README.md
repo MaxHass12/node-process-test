@@ -1,0 +1,5 @@
+- Run `npm run start-ctr` to start the app listening on `3001`.
+- The app runs from within a Docker Container (name = `node-process-test-ctr`) through `pm2` in cluster mode with multiple process
+- We can exec into the container with `docker exec -it node-process-test-ctr bash`. There run `ps aux | grep node` to check multiple pm2 process as different instances of the same application-server.
+- While the server is running, we can `curl http://localhost:3001` to send `GET /` request to the server. The server responds with the `pid` of the process which handled the response.
+- To introduce an element of concurrency issues, I have used random number and date to set a different value of `globalValue` if 2 different process handle a request concurrently. I am interested in knowing how to handle concurrency issues like this.
